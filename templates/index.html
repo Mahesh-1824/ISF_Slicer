@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incremental Forming</title>
+    <link rel="icon" href="../static/Tool path1.png" type="image/icon type">
+    <link rel="stylesheet" href="../static/style.css">
+<script>
+function postFile() {
+    var formdata = new FormData();
+
+    formdata.append('file1', $('#file1')[0].files[0]);
+
+    var request = new XMLHttpRequest();
+
+    request.upload.addEventListener('progress', function (e) {
+        var file1Size = $('#file1')[0].files[0].size;
+
+        if (e.loaded <= file1Size) {
+            var percent = Math.round(e.loaded / file1Size * 100);
+            $('#progress-bar-file1').width(percent + '%').html(percent + '%');
+        } 
+
+        if(e.loaded == e.total){
+            $('#progress-bar-file1').width(100 + '%').html(100 + '%');
+        }
+    });   
+
+    request.open('post', '/echo/html/');
+    request.timeout = 45000;
+    request.send(formdata);
+}
+</script>
+</head>
+<body>
+    <div class="header">
+        <img src="../static/27-dff6c2520e4e6c7c8feb5a3f9ba36b1f-removebg-preview.png" alt="Logo 1">
+        <h1 style="color: white;">Toolpath for Incremental Sheet Forming process</h1>
+        <img src="../static/IIT_Hyderabad_Insignia.svg.png" alt="Logo 2">
+        
+    </div>
+    <div class="container">
+        <nav class="navbar">
+            <div class="main-nav">
+                <div class="left-nav">
+                    <a class="nav-links" href="/feedback">Feedback</a>
+                    <a class="nav-links">{{message}}</a>
+                </div>
+                <a class="nav-links" href="signout">Signout</a>
+            </div>
+        </nav>  
+    </div>
+        <div class="container-upload">
+            <p style="color: red;">{{message1}}</p>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="drop-zone">
+              <span class="drop-zone__prompt">Drag and drop your .STEP file here or just Click to upload</span>
+              <input style="font-size: larger;" required class="drop-zone__input" type="file" name="file" accept=".step,.stp">
+            </div>
+            <p><input required type="number" step="0.00001" name="tool_dia" id="tool_dia" placeholder="Enter the Tool diameter(mm)"></p>
+            <p><input required type="number" step="0.00001" name="feedrate" id="feedrate" placeholder="Enter the Feedrate(mm/min)"></p>
+            <fieldset style="margin-left: 25%;margin-right: 25%;">
+            <legend style="font-size: larger; text-align: left;">Select controller type</legend>
+            <p style="text-align: left;">SIEMENS<input required type="radio" name="cnc" id="cnc1" value="Siemens"></p>
+            <p style="text-align: left;">FANUC<input required type="radio" name="cnc" id="cnc2" value="Fanuc"></p>
+            </fieldset>
+            <button class="upload_btn" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        
+        <footer id="contact-section">
+            <p class="copyright">© 2024 Incremental Forming. All rights reserved.</p>
+        </footer>
+    </div>
+    <div class="footer">
+        <div class="team-info">
+            <div class="team-member">
+                <h2 style="color: #666;">Developers</h2>
+                <h3>Mahesh Derangula</h3>
+                <h3>Akella Sreenivasu</h3>
+                <p>CSE, IIT Dharwad</p>
+            </div>
+            <div class="team-member">
+                <h2 style="color: #666;">Mentor</h2>
+                <h3>Dr. Rakesh Lingam</h3>
+                <p>Assistant Professor, Department of Mechanical, Materials and Aerospace Engineering at IIT Dharwad</p>
+            </div>
+            <div class="team-member">
+                <h2 style="color: #666;">Mentor</h2>
+                <h3>Dr. Venkata Reddy N</h3>
+                <p>Professor, Department of Mechanical and Aerospace Engineering at IIT Hyderabad</p>
+            </div>
+        </div>
+    </div>
+    <script>
+      document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+          const dropZoneElement = inputElement.closest(".drop-zone");
+      
+          dropZoneElement.addEventListener("click", (e) => {
+              inputElement.click();
+          });
+      
+          inputElement.addEventListener("change", (e) => {
+              if (inputElement.files.length) {
+                  updateThumbnail(dropZoneElement, inputElement.files[0]);
+              }
+          });
+      
+          dropZoneElement.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              dropZoneElement.classList.add("drop-zone--over");
+          });
+      
+          ["dragleave", "dragend"].forEach((type) => {
+              dropZoneElement.addEventListener(type, (e) => {
+                  dropZoneElement.classList.remove("drop-zone--over");
+              });
+          });
+      
+          dropZoneElement.addEventListener("drop", (e) => {
+              e.preventDefault();
+      
+              if (e.dataTransfer.files.length) {
+                  inputElement.files = e.dataTransfer.files;
+                  updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+              }
+      
+              dropZoneElement.classList.remove("drop-zone--over");
+          });
+      });
+      
+      /**
+       * Updates the thumbnail on a drop zone element.
+       *
+       * @param {HTMLElement} dropZoneElement
+       * @param {File} file
+       */
+      function updateThumbnail(dropZoneElement, file) {
+          let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+      
+          // First time - remove the prompt
+          if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+              dropZoneElement.querySelector(".drop-zone__prompt").remove();
+          }
+      
+          // First time - there is no thumbnail element, so let's create it
+          if (!thumbnailElement) {
+              thumbnailElement = document.createElement("div");
+              thumbnailElement.classList.add("drop-zone__thumb");
+              dropZoneElement.appendChild(thumbnailElement);
+          }
+      
+          thumbnailElement.dataset.label = file.name;
+      }
+    </script>
+</body>
+      
+</html>

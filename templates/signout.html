@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Sign Out</title>
+    <link rel="icon" href="../static/Tool path1.png" type="image/icon type">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a2c1e5, #01394b); /* Shades of blue */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            max-width: 90%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            background: #01394b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #478d63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to sign out?</h1>
+        <form action="/signout" method="post">
+            <button type="submit" name="confirm" value="yes">Yes</button>
+            <button type="submit" name="confirm" value="no">No</button>
+        </form>
+    </div>
+</body>
+</html>

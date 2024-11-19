@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incremental Forming | Download</title>
+    <style>
+        body { margin: 0; }
+        .viewer-container {
+            height: 500px;
+            max-height: 500px; 
+            margin-top: 10px;
+            margin-left: 12%;
+            margin-right: 12%;
+            margin-bottom: auto;
+            
+        
+        }
+        canvas {margin: auto; display: block; border: aliceblue; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);}
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--link rel="stylesheet" href="style.css"!-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <link rel="icon" href="../static/Tool path1.png" type="image/icon type">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p style="font-size: 30px; color: white;background-color: #0a8098; border-radius: 10px;margin-top: 10px;padding-left: 1px;">Download toolpath</p>
+    
+        <a href="/home" class="button_view">
+        <button class="another_btn" style="margin-left: 0.5%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="20%" fill="#0a8098" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+                </svg>
+                <span style="font-size: 100%; color: #0a8098;">Another</span>
+        </button>
+        </a>
+        <a href="/download1" download="contour.zip" class="button_view">
+        <button class="contour_btn" style="float: right; margin-right: 0.5%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="20%" fill="#0a8098" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                </svg>
+                <spam class="text" style="font-size: 100%; color: #0a8098;">Contour</spam>
+        </button>
+        </a>
+        <a href="/download2" download="spiral.zip" class="button_view">
+        <button class="spiral_btn" style="float: right; margin-right: 0.5%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="20%" fill="#0a8098" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                </svg>
+                <samp class="text" style="font-size: 100%; color: #0a8098; margin-right: 1%;">Spiral</spam>
+        </button>
+        </a>
+    </div>
+    <div class="viewer-container" id="viewer-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r128/examples/js/loaders/STLLoader.js"></script>
+    <script>
+        const container = document.getElementById('viewer-container');
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xADD8E6);
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; 
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(50, 50, 50);
+        scene.add(light);
+        
+        
+        const loader = new THREE.STLLoader();
+        loader.load(`/uploads/{{ filename }}`, function (geometry) {
+            var material = new THREE.MeshPhongMaterial({color: 0x808080, specular: 0xFFFFFF, shininess: 200});
+            //const material = new THREE.MeshStandardMaterial({ color: 0x606060 });
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            // Calculate bounding box
+            const bbox = new THREE.Box3().setFromObject(mesh);
+            const center = bbox.getCenter(new THREE.Vector3());
+            const size = bbox.getSize(new THREE.Vector3());
+
+            // Center the mesh
+            mesh.position.sub(center);
+
+            // Adjust camera position based on bounding box size
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = camera.fov * (Math.PI / 180);
+            const cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+            camera.position.set(center.x, center.y, cameraZ);
+            camera.lookAt(center);
+
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambientLight);
+
+            animate();
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+    <div class="plot-container" id="">
+        <iframe class="plot-iframe" src="{{ url_for('static', filename='pnt.html') }}"></iframe>
+        <iframe class="plot-iframe" src="{{ url_for('static', filename='spnt.html') }}"></iframe>
+        
+    </div>
+    <div class="container_btn">
+    <a href="/simul1">
+        <button class="sim_btn" id="loadIframeButton1">
+            <spam class="text" style="font-size: 100%; color: #0a8098;">Simulate</spam>
+        </button>
+    </a>
+    <a href="/simul2">
+        <button class="sim_btn" id="loadIframeButton2">
+            <spam class="text" style="font-size: 100%; color: #0a8098;">Simulate</spam>
+        </button>
+    </a>
+    </div>
+    
+    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>

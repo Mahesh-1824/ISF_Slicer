@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="../static/Tool path1.png" type="image/icon type">
+    <style>
+        .exit-btn{
+            background-color: white;
+            border-color: #0a8098;
+            color: #0a8098;
+        }
+        .exit-btn:focus{
+            outline: none;
+        }
+        .exit-btn:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            color: black;
+            background-color: white;
+            border: #fafafa;
+            cursor: pointer;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <button class="exit-btn" onclick="goback()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+        </svg>
+    </button>
+    <iframe src = "../static/simulSpiral.html" style="width: 100%; height: 600px;"></iframe>
+    <script>
+        function goback(){
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

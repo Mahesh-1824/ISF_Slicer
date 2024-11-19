@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolpath</title>
+    <link rel="icon" href="../static/Tool path1.png" type="image/icon type">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a2c1e5, #01394b); /* Shades of blue */
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: #365f79;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            height: 110px;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+        .main-content {
+            max-width: 1200px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-align: left;
+        }
+        .text {
+            flex: 1;
+            padding: 20px;
+        }
+        .text h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .text p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        .text .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background: #01394b;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+        .text .btn:hover {
+            background: rgb(6, 148, 243);
+        }
+        .image {
+            flex: 1;
+            padding: 20px;
+        }
+        .image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            background: #252525;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .team-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .team-member {
+            width: 30%;
+            padding: 10px;
+            margin: 10px;
+            background: #000000;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .team-member h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .team-member p {
+            margin-top: 5px;
+            font-size: 1.1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="../static/27-dff6c2520e4e6c7c8feb5a3f9ba36b1f-removebg-preview.png" alt="Logo 1">
+        <img src="../static/IIT_Hyderabad_Insignia.svg.png" alt="Logo 2">
+    </div>
+    <div class="main">
+        <div class="main-content">
+            <div class="text">
+                <h1>Toolpath Generation for Incremental Sheet Forming</h1>
+                <p>Welcome to the toolpath generation web app for incremental forming. This application allows users to generate precise toolpaths(contour and spiral) for single point Incremental Forming process, utilizing CAD model with .STEP extension. Along with toolpath, you will also be able to get points and normal vectors. Additionally, you can view your 3D model and simulate the path generation.</p>
+                <a href="/login" class="btn">Get Started</a>
+            </div>
+            <div class="image">
+                <img src="../static/Designer1.jpeg" alt="Incremental Forming Process">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="team-info">
+            <div class="team-member">
+                <h2 style="color: #666;">Developer</h2>
+                <h3>Pranu Pranjal</h3>
+                <p>Undergrad, Department of Mechanical Engineering at NIT AP</p>
+            </div>
+            <div class="team-member">
+                <h2 style="color: #666;">Mentor</h2>
+                <h3>Dr. Rakesh Lingam</h3>
+                <p>Assistant Professor, Department of Mechanical, Materials and Aerospace Engineering at IIT Dharwad</p>
+            </div>
+            <div class="team-member">
+                <h2 style="color: #666;">Mentor</h2>
+                <h3>Dr. Venkata Reddy N</h3>
+                <p>Professor, Department of Mechanical and Aerospace Engineering at IIT Hyderabad</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

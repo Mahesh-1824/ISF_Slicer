@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a2c1e5, #01394b);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            max-width: 90%;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #01394b;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background: #01394b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #478d63;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #478d63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback</h2>
+        <form action="/comment" method="post" enctype="multipart/form-data">
+            <input type="text" name="comment" id="comment" placeholder="Write us your feedback" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p>{{ message }}</p>
+    </div>
+</body>
+</html>
